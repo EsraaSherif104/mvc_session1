@@ -1,0 +1,51 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    @*  start header*@
+    <nav class="mt-5">
+
+        <center>
+            @*1.html tag*@
+            @* <a class="btn btn-primary" href="/Home/Index">Home</a> *@
+            @*2.html helpers*@
+          @*   asp.net framework feature c# METHD to generate html *@
+@*             @Html.ActionLink("Home", "Index", "Home", null, new {@class="btn btn-primary"})
+ *@          @* 
+            3.tag helpers
+            asp.net feature  *@
+             <a class="btn btn-primary" asp-controller="Home" asp-action="Index">Home</a> 
+
+            <a class="btn btn-secondary" asp-controller="Home" asp-action="AboutUS">AboutUS</a>
+            <a class="btn btn-success" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <a class="btn btn-danger" asp-controller="Home" asp-action="ContectUS">contectUS</a>
+            <a class="btn btn-warming" asp-controller="Account" asp-action="Login">Login</a>
+            <a class="btn btn-dark" asp-controller="Account" asp-action="Register">Register</a>
+
+        </center>
+
+
+    </nav>
+    @* end header *@
+
+    <div>
+        @RenderBody()
+    </div>
+    @*start footer*@
+    <footer class="mt-5">
+        <center>
+            <div>
+                <p>CopyRighs &copy;Route @DateTime.Now.Year</p>
+            </div>
+        </center>
+    </footer>
+    @*end footer*@
+</body>
+</html>

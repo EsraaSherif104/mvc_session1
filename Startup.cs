@@ -29,30 +29,24 @@ namespace mvc_session1
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseStaticFiles();//get static fills resources
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
+            
+                app.UseEndpoints(endpoints =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-                endpoints.MapGet("/Index", async context =>
-                {
-                    await context.Response.WriteAsync("Hello Route!");
-                });
-
-                endpoints.MapControllerRoute(
+                    endpoints.MapControllerRoute(
 
                     name: "default",
-                    pattern: "{Controller=Movies}/{action=Index}/{id:int?}"
+                    pattern: "{Controller=Home}/{action=Index}/{id:int?}");
                     //id is option
                     //defaults :new {action="Index"},
                     ////?? ????? action 
                     //constraints: new {id=new IntRouteConstraint()}
-                    );
-            });
-        }
+                });
+
+
+            }
+            
     }
 }
