@@ -16,6 +16,10 @@ namespace mvc_session1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews(); //mvc
+                                                //  services.AddRazorPages(); //razor page
+                                                //services.AddControllers();//WEb Api
+                                                // services.AddMvc();//mix[3project]
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +38,20 @@ namespace mvc_session1
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
+                endpoints.MapGet("/Index", async context =>
+                {
+                    await context.Response.WriteAsync("Hello Route!");
+                });
+
+                endpoints.MapControllerRoute(
+
+                    name: "default",
+                    pattern: "{Controller=Movies}/{action=Index}/{id:int?}"
+                    //id is option
+                    //defaults :new {action="Index"},
+                    ////?? ????? action 
+                    //constraints: new {id=new IntRouteConstraint()}
+                    );
             });
         }
     }
